@@ -1,0 +1,17 @@
+pipeline {
+       agent {
+               label 'agentnode1'
+       }
+       stages {
+               stage ('pull scm') {
+                       steps {
+                               echo "pull code from scm repository"
+                       }
+               }
+               stage('build') {
+                      steps {
+                              echo "mvn clean verify"
+                      }
+               }
+        }
+}
