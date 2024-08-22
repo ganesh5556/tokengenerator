@@ -5,12 +5,12 @@ pipeline {
        stages {
                stage ('pull scm') {
                        steps {
-                               echo "pull code from scm repository"
+                               checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[credentialsId: 'githubganesh', url: 'https://github.com/ganesh5556/tokengenerator.git']])
                        }
                }
                stage('build') {
                       steps {
-                              echo "mvn clean verify"
+                              sh "mvn clean verify"
                       }
                }
         }
